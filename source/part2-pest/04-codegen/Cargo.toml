@@ -1,0 +1,9 @@
+[package]
+name = "lumina-part2-codegen"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+inkwell = { version = "0.4", features = ["llvm17-0"] }
+lumina-part2-typecheck = { path = "../03-typecheck" }
+lumina-part1-codegen = { path = "../../part1-recursive-descent/04-codegen" }

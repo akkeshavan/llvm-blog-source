@@ -1,0 +1,8 @@
+[package]
+name = "lumina-part2-parser"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+pest = "2"
+pest_derive = "2"
