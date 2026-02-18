@@ -1,0 +1,38 @@
+# Rust build output (from source/ and anywhere)
+**/target/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor / IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Python (if any under source/)
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+*.egg-info/
+.eggs/
+
+# Node (if any under source/)
+node_modules/
+
+# Build / generated
+*.o
+*.so
+*.dylib
+*.dll
+*.exe
+*.rlib
+*.pdb
+
+# Rust fmt/backup
+*.rs.bk
+*.orig
