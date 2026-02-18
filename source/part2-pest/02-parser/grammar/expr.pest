@@ -1,0 +1,19 @@
+// Part 2: Grammar-driven parser (pest)
+// Expression grammar for Lumina
+
+WHITESPACE = _{ " " | "\t" | "\n" | "\r" }
+
+int   = @{ ASCII_DIGIT+ }
+ident = @{ (ASCII_ALPHA | "_") ~ (ASCII_ALPHANUMERIC | "_")* }
+
+// Expression with precedence: add/sub (lowest), then mul, then atom
+expr     = { add_sub }
+add_sub  = { mul ~ add_rest* }
+add_op   = { "+" | "-" }
+add_rest = { add_op ~ mul }
+mul      = { atom ~ mul_rest* }
+star     = { "*" }
+mul_rest = { star ~ atom }
+atom     = { int | ident | "(" ~ expr ~ ")" }
+
+program  = { SOI ~ expr ~ EOI }

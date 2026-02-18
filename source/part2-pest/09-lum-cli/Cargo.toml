@@ -1,0 +1,17 @@
+[package]
+name = "lumina-part2-lum-cli"
+version = "0.1.0"
+edition = "2021"
+
+[[bin]]
+name = "lum"
+path = "src/main.rs"
+
+[dependencies]
+clap = { version = "4", features = ["derive"] }
+lumina-part2-codegen = { path = "../04-codegen" }
+lumina-part2-typecheck = { path = "../03-typecheck" }
+tempfile = "3"
+lumina-part1-codegen = { path = "../../part1-recursive-descent/04-codegen" }
+lumina-part1-runtime = { path = "../../part1-recursive-descent/05-runtime-stdlib" }
+lumina-part1-targets = { path = "../../part1-recursive-descent/08-targets" }
