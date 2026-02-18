@@ -41,9 +41,45 @@ pub fn optimize_ir(input: &Path, output: &Path, level: OptLevel) -> Result<(), S
 #[cfg(test)]
 mod tests {
     use super::*;
+    use std::io::Write;
 
     #[test]
     fn opt_level_args() {
         assert_eq!(OptLevel::O2.to_opt_arg(), "-O2");
+    }
+
+    /// Runs opt on a minimal IR file; requires `opt` on PATH (e.g. from LLVM).
+    #[test]
+    fn optimize_ir_produces_output() {
+        let dir = tempfile::tempdir().expect("temp dir");
+        let input_path = dir.path().join("in.ll");
+        let output_path = dir.path().join("out.ll");
+
+        let ir = r#"
+define i64 @lumina_entry() {
+entry:
+  ret i64 42
+}
+"#;
+        std::fs::File::create(&input_path)
+            .expect("create in.ll")
+            .write_all(ir.trim().as_bytes())
+            .expect("write ir");
+
+        let result = optimize_ir(&input_path, &output_path, OptLevel::O2);
+        if let Err(e) = &result {
+            if e.contains("failed to run opt") || e.contains("No such file") {
+                eprintln!("skipping: opt not on PATH or LLVM not installed: {e}");
+                return;
+            }
+        }
+        result.expect("optimize_ir");
+
+        assert!(output_path.exists(), "opt should produce output file");
+        let out_content = std::fs::read_to_string(&output_path).expect("read output");
+        assert!(
+            out_content.contains("lumina_entry") || out_content.contains("42"),
+            "output should contain our function or constant"
+        );
     }
 }
