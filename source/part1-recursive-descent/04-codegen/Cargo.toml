@@ -1,0 +1,12 @@
+[package]
+name = "lumina-part1-codegen"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+inkwell = { version = "0.4", features = ["llvm17-0"] }
+lumina-part1-typecheck = { path = "../03-typecheck" }
+
+[dev-dependencies]
+lumina-part1-parser = { path = "../02-parser" }
+tempfile = "3"

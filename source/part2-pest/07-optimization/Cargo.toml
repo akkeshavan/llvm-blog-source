@@ -1,0 +1,7 @@
+[package]
+name = "lumina-part2-optimization"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+lumina-part1-optimization = { path = "../../part1-recursive-descent/07-optimization" }
