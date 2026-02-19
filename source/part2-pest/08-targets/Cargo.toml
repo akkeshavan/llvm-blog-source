@@ -1,7 +1,0 @@
-[package]
-name = "lumina-part2-targets"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-lumina-part1-targets = { path = "../../part1-recursive-descent/08-targets" }

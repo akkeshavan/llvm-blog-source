@@ -1,8 +1,0 @@
-[package]
-name = "lumina-part1-typecheck"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-lumina-part1-lexer = { path = "../01-lexer" }
-lumina-part1-parser = { path = "../02-parser" }

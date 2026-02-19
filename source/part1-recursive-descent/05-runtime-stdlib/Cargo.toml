@@ -1,7 +1,0 @@
-[package]
-name = "lumina-part1-runtime"
-version = "0.1.0"
-edition = "2021"
-
-[dependencies]
-lumina-part1-codegen = { path = "../04-codegen" }
